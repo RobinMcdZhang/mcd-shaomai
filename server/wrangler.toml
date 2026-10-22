@@ -1,0 +1,18 @@
+name = "shaomai-mcd"
+main = "worker.js"
+compatibility_date = "2025-05-01"
+
+# D1 数据库绑定：代码里通过 env.DB 访问
+[[d1_databases]]
+binding = "DB"
+database_name = "shaomai"
+# 首次部署前先执行：wrangler d1 create shaomai
+# 然后把输出的 id 填到下面（形如 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx）
+database_id = "<your-d1-database-id>"
+
+# 说明（部署步骤，跑命令即可，无需改其它）：
+# 1) npm i -g wrangler
+# 2) wrangler login
+# 3) wrangler d1 create shaomai          # 建库，拿到 id 填上行
+# 4) wrangler deploy                      # 表由 worker.js 内 ensureSchema 自动建
+# 5) 浏览器打开 https://<subdomain>.workers.dev/ 即看板
